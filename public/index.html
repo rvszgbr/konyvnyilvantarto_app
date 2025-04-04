@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Könyvnyilvántartó</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 style="word-break: break-word;">Könyvnyilvántartó</h1>
+
+    <input type="text" id="search" placeholder="Keresés cím vagy szerző szerint..." class="full-width" />
+
+    <select id="category-filter">
+      <option value="Összes">Összes kategória</option>
+      <option value="Regény">Regény</option>
+      <option value="Tankönyv">Tankönyv</option>
+      <option value="Ismeretterjesztő">Ismeretterjesztő</option>
+      <option value="Történelem">Történelem</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Horror">Horror</option>
+      <option value="Sci-fi">Sci-fi</option>
+      <option value="Életrajz">Életrajz</option>
+      <option value="Vers">Vers</option>
+      <option value="Ifjúsági">Ifjúsági</option>
+      <option value="Krimi">Krimi</option>
+      <option value="Romantikus">Romantikus</option>
+    </select>
+
+    <form id="book-form" enctype="multipart/form-data">
+      <input type="hidden" id="book-id" name="id" />
+
+      <label for="title" class="required">Cím</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="author" class="required">Szerző</label>
+      <input type="text" id="author" name="author" required />
+
+      <label for="year" class="required">Év</label>
+      <input type="number" id="year" name="year" required />
+
+      <label for="category" class="required">Kategória</label>
+      <select id="category" name="category" required>
+        <option value="">Kategória kiválasztása</option>
+        <option value="Regény">Regény</option>
+        <option value="Tankönyv">Tankönyv</option>
+        <option value="Ismeretterjesztő">Ismeretterjesztő</option>
+        <option value="Történelem">Történelem</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Horror">Horror</option>
+        <option value="Sci-fi">Sci-fi</option>
+        <option value="Életrajz">Életrajz</option>
+        <option value="Vers">Vers</option>
+        <option value="Ifjúsági">Ifjúsági</option>
+        <option value="Krimi">Krimi</option>
+        <option value="Romantikus">Romantikus</option>
+      </select>
+
+      <label for="description">Leírás</label>
+      <textarea id="description" name="description" placeholder="Könyv leírása (nem kötelező)"></textarea>
+
+      <label for="rating" class="required">Értékelés</label>
+      <select id="rating" name="rating" required>
+        <option value="">Értékelés (1-5)</option>
+        <option value="1">1 ★</option>
+        <option value="2">2 ★★</option>
+        <option value="3">3 ★★★</option>
+        <option value="4">4 ★★★★</option>
+        <option value="5">5 ★★★★★</option>
+      </select>
+
+      <label for="cover">Borítókép</label>
+      <input type="file" id="cover" name="cover" accept="image/*" />
+
+      <button type="submit">Mentés</button>
+    </form>
+
+    <p id="error-message" style="color: red; display: none; font-weight: bold; text-align: center;"></p>
+
+    <ul id="book-list"></ul>
+  </div>
+
+  <div id="book-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="modal-close" class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p><strong>Szerző:</strong> <span id="modal-author"></span></p>
+      <p><strong>Év:</strong> <span id="modal-year"></span></p>
+      <p><strong>Kategória:</strong> <span id="modal-category"></span></p>
+      <p><strong>Leírás:</strong></p>
+      <p id="modal-description"></p>
+      <p><strong>Értékelés:</strong> <span id="modal-rating" class="rating"></span></p>
+      <div id="modal-cover-container"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
